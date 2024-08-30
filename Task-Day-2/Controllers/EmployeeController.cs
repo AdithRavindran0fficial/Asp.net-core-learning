@@ -16,15 +16,16 @@ namespace Task_Day_2.Controllers
         
         }
         [HttpGet("api/employees")]
-        public IActionResult Get()
+        public async Task< IActionResult> Get()
         {
-            
-            return Ok(_emplyee.Get());
+            var data = await _emplyee.Get();
+            return Ok(data);
         }
         [HttpGet("api/employees/{id}")]
-        public IActionResult Get_id(int id)
+        public async Task< IActionResult> Get_id(int id)
         {
-            return Ok(_emplyee.Get_id(id));
+            var person = await _emplyee.Get_id(id);
+            return Ok(person);
             
         }
         [HttpPost]

@@ -5,17 +5,19 @@ namespace Task_Day_2.Services
     public class Employees :IEmployees
     {
         public List<Employ_data>?Employee_list = new List<Employ_data>();
-        public List<Employ_data> Get()
+        public async Task<List<Employ_data>> Get()
         {
+            await Task.Delay(1000);
             return Employee_list;
         }
-        public Employ_data Get_id(int id)
+        public async Task<Employ_data> Get_id(int id)
         {
             var existing = Employee_list.FirstOrDefault(emp => emp.Id==id);
             if (existing == null)
             {
                 throw new Exception("Emplyee not found");
             }
+            await Task.Delay(1000);
             return existing;
         }
         public Employ_data Post(Employ_data employ)
